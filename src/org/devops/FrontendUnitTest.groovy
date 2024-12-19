@@ -3,7 +3,11 @@ def installDependencies() {
         steps {
             script {
                 if (fileExists('package.json')) {
-                    sh 'npm install'
+                    if (isUnix()) {
+                        sh 'npm install'
+                    } else {
+                        bat 'npm install'
+                    }
                 } else {
                     error "No package.json file found. Unable to install dependencies."
                 }
@@ -16,8 +20,11 @@ def runReactUnitTests() {
     stage('Run React Unit Tests') {
         steps {
             script {
-
-                sh 'npm run test -- --coverage'
+                if (isUnix()) {
+                    sh 'npm run test -- --coverage'
+                } else {
+                    bat 'npm run test -- --coverage'
+                }
             }
         }
     }
@@ -27,7 +34,7 @@ def publishCoverageReport() {
     stage('Publish Coverage Report') {
         steps {
             script {
-                publishHTML (target: [
+                publishHTML(target: [
                     allowMissing: true,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,

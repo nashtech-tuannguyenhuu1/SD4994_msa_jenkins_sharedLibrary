@@ -1,6 +1,8 @@
 import org.devops.*
 
 def call(serviceName) {
-    def unitTest = new BackendUnitTest()
-    unitTest.runUnitTests()
+    def unitTest = new FrontendUnitTest()
+    unitTest.installDependencies()
+    unitTest.runReactUnitTests()
+    unitTest.publishCoverageReport()
 }
