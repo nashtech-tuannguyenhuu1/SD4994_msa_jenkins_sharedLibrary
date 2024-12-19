@@ -15,13 +15,10 @@ void call(Map pipelineParams) {
             stage ('Load Pipeline') {
                 when {
                     allOf {
-                        // Condition Check
                         anyOf{
-                            // Branch Event: Nornal Flow
                             anyOf {
                                 branch 'main'
                             }
-                            // Manual Run: Only if checked.
                             allOf{
                                 triggeredBy 'UserIdCause'
                             }
