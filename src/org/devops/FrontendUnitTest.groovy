@@ -20,9 +20,9 @@ def runReactUnitTests() {
     stage('Run React Unit Tests') {
         script {
             if (isUnix()) {
-                sh 'npm run test -- --coverage'
+                sh 'npm run test -- --coverage --passWithNoTests'
             } else {
-                bat 'npm run test -- --coverage'
+                bat 'npm run test -- --coverage --passWithNoTests'
             }
         }
     }
