@@ -1,3 +1,5 @@
+package org.devops
+
 def installDependencies() {
     stage('Install Dependencies') {
         steps {
