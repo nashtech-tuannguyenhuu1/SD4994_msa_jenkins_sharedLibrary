@@ -30,7 +30,9 @@ void call(Map pipelineParams) {
                 }
                 steps {
                     script {
-                        backendPipelineTemplate("backend")
+                        dir('src/backend') {
+                            backendPipelineTemplate("backend")
+                        }
                     }
                 }
             }
