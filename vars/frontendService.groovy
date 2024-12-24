@@ -17,9 +17,6 @@ void call(Map pipelineParams) {
         
         stages {
             stage ('Load Pipeline') {
-                when {
-                    branch 'main'
-                }
                 steps {
                     script {
                         dir('src/frontend') {
