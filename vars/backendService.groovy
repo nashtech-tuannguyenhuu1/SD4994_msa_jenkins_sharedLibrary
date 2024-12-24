@@ -17,12 +17,6 @@ void call(Map pipelineParams) {
 
         stages {
             stage ('Load Pipeline') {
-                when {
-                    anyOf {
-                        branch 'main'
-                        triggeredBy 'UserIdCause'
-                    }
-                }
                 steps {
                     echo "Branch is ${env.BRANCH_NAME}"  // Kiểm tra nhánh hiện tại
                     echo "Triggered by: ${currentBuild.triggeredBy}"  // Kiểm tra trigger

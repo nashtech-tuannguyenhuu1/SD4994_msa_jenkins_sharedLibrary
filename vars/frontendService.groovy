@@ -17,12 +17,6 @@ void call(Map pipelineParams) {
         
         stages {
             stage ('Load Pipeline') {
-                when {
-                    anyOf {
-                        branch 'main'
-                        triggeredBy 'UserIdCause'
-                    }
-                }
                 steps {
                     script {
                         dir('src/frontend') {
