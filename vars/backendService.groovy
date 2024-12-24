@@ -18,15 +18,9 @@ void call(Map pipelineParams) {
         stages {
             stage ('Load Pipeline') {
                 when {
-                    allOf {
-                        anyOf{
-                            anyOf {
-                                branch 'main'
-                            }
-                            allOf{
-                                triggeredBy 'UserIdCause'
-                            }
-                        }
+                    anyOf {
+                        branch 'main'
+                        triggeredBy 'UserIdCause'
                     }
                 }
                 steps {
