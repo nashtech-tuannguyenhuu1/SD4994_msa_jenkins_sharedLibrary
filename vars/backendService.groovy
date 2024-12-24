@@ -18,6 +18,8 @@ void call(Map pipelineParams) {
         stages {
             stage ('Load Pipeline') {
                 when {
+                    echo "Branch is ${env.BRANCH_NAME}"
+                    echo "Triggered by: ${currentBuild.triggeredBy}"
                     anyOf {
                         branch 'main'
                         triggeredBy 'UserIdCause'
