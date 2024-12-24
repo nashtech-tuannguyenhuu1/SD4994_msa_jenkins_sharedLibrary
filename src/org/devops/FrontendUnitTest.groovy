@@ -4,11 +4,7 @@ def installDependencies() {
     stage('Install Dependencies') {
         script {
             if (fileExists('package.json')) {
-                if (isUnix()) {
-                    sh 'npm install'
-                } else {
-                    bat 'npm install'
-                }
+                sh 'npm install'
             } else {
                 error "No package.json file found. Unable to install dependencies."
             }
@@ -19,11 +15,7 @@ def installDependencies() {
 def runReactUnitTests() {
     stage('Run React Unit Tests') {
         script {
-            if (isUnix()) {
-                sh 'npm run test -- --coverage --passWithNoTests'
-            } else {
-                bat 'npm run test -- --coverage --passWithNoTests'
-            }
+            sh 'npm run test -- --coverage --passWithNoTests'
         }
     }
 }
