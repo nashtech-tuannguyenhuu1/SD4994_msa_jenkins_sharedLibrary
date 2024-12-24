@@ -5,6 +5,10 @@ void call(Map pipelineParams) {
 
         agent any
 
+        triggers {
+            githubPush()
+        }
+
         options {
             disableConcurrentBuilds()
             disableResume()
